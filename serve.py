@@ -30,7 +30,7 @@ def render_message():
         image = io.imread(image_url)
         
         #Apply same preprocessing used while training CNN model
-        image_small = st.resize(image, (32,32,3))
+        image_small = st.resize(image, (224,224,3))
         x = np.expand_dims(image_small.transpose(2, 0, 1), axis=0)
         
         #Call classify function to predict the image class using the loaded CNN model
