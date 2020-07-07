@@ -21,8 +21,8 @@ def entry_page():
 @app.route('/predict_object/', methods=['GET', 'POST'])
 def render_message():
     #Loading CNN model
-    saved_model = 'saved_models/tuned_model_fin.h5'
-    model = load_model(saved_model)
+    saved_model = 'model/squeezenet_model'
+    model = load_learner(saved_model)
     
     try:
         #Get image URL as input
@@ -34,12 +34,11 @@ def render_message():
         x = np.expand_dims(image_small.transpose(2, 0, 1), axis=0)
         
         #Call classify function to predict the image class using the loaded CNN model
-        final,pred_class = classify(x, model)
-        print(pred_class)
-        print(final)
+        pred = model.predict(image_small)
+        print(pred[0])
         
         #Store model prediction results to pass to the web page
-        message = "Model prediction: {}".format(pred_class)
+        message = "Model prediction: {}".format(pred[0])
         print('Python module executed successfully')
         
     except Exception as e:
@@ -50,5 +49,4 @@ def render_message():
     #Return the model results to the web page
     return render_template('index.html',
                             message=message,
-                            data=final.round(decimals=2),
                             image_url=image_url)
