@@ -12,7 +12,7 @@ path = Path()
 
 application = Flask(__name__)
 
-model = load_learner(path, 'model/squeezenet_model.pkl')
+model = load_learner(path, 'model/squeezenet_model')
 
 app = Flask(__name__)
 
