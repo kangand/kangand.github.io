@@ -39,3 +39,7 @@ def predict():
 
     #Render the result in the html template
     return render_template('index.html', prediction_text='Your Prediction :  {} '.format(prediction))
+
+if __name__ == "__main__":
+    #run the application
+    application.run(host='0.0.0.0')
