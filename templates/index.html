@@ -13,13 +13,13 @@
   
 </head>
 <style>
-body,h1 {font-family: "Raleway", sans-serif; color:white; font-weight: bold; }
+body,h1 {font-family: "Raleway", sans-serif; color:black; font-weight: bold; }
 body, html {height: 100% }
 form{ color:white;}
 </style>
-<body style="background-image: url('https://images.unsplash.com/photo-1543493311-14cc44c3ced4?ixlib=rb-1.2.1&auto=format&fit=crop&w=2378&q=80'); background-size: cover; margin-left: 5%;">
+<body>
  <div class="login">
-  <h1>Predict</h1>
+  <h1>Demo: Jewellery Classification</h1>
 
     <div class="Variables">
     <form action="{{ url_for('predict')}}"method="post" enctype=multipart/form-data>
@@ -31,7 +31,7 @@ form{ color:white;}
     <br>
    <br>
     <div>
-    <button type="submit" class="btn btn-primary btn-block btn-large">Predict The Bear</button>
+    <button type="submit" class="btn btn-primary btn-block btn-large">Predict Jewellery Type</button>
     </div>
 
     </form>
