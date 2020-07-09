@@ -1,31 +1,48 @@
 <!DOCTYPE html>
-<html>
-<body>
-<h1 style="font-family:verdana; color:#38495A">Demo: Jewellery Classification</h1>
-<p>Upload Image:</p>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Demo: Jewellery Classification</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
   
+</head>
+<style>
+body,h1 {font-family: "Raleway", sans-serif; color:white; font-weight: bold; }
+body, html {height: 100% }
+form{ color:white;}
+</style>
+<body style="background-image: url('https://images.unsplash.com/photo-1543493311-14cc44c3ced4?ixlib=rb-1.2.1&auto=format&fit=crop&w=2378&q=80'); background-size: cover; margin-left: 5%;">
+ <div class="login">
+  <h1>Predict</h1>
 
-<div>
-    <form id="upload-file" method="post" enctype="multipart/form-data">
-        Choose a file to upload: <input name="uploadedfile" type="file" /><br />
-        <input type="file" name="file" id="imageUpload" accept=".png, .jpg, .jpeg">
-    </form>
+    <div class="Variables">
+    <form action="{{ url_for('predict')}}"method="post" enctype=multipart/form-data>
 
-    <div class="image-section" style="display:none;">
-        <div id="imagePreview">
-        </div>
-        <div>
-            <button type="button" id="btn-predict">Predict!</button>
-        </div>
+    <label>Pick image</label>
+    <input type=file name=file>
+ 
+    </div>
+    <br>
+   <br>
+    <div>
+    <button type="submit" class="btn btn-primary btn-block btn-large">Predict The Bear</button>
     </div>
 
-    <div class="loader" style="display:none;"></div>
+    </form>
 
-    <h3 id="result">
-        <span> </span>
-    </h3>
+   <br>
+   <br>
+   {{ prediction_text }}
+   {{ prediction }}
 
-</div>  
-  
+ </div>
+
+
 </body>
 </html>
