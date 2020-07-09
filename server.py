@@ -2,8 +2,10 @@ import numpy as np
 from flask import Flask, request, render_template
 import pickle
 
-from fastai.vision import *
-from fastai import *
+from fastai.vision import open_image
+from fastai.basic_train import load_learner
+import torch
+from PIL import Image 
 
 import os
 
@@ -26,13 +28,8 @@ def predict():
 
     file = request.files['file']
 
-    #Store the uploaded images in a temporary folder
-    if file:
-        filename = file.filename
-        file.save(os.path.join("resources/tmp", filename))
-
-    to_predict = "resources/tmp/"+filename
-    img = open_image(to_predict)
+    #open file
+    img = open_image(file)
 
     #Getting the prediction from the model
     prediction = model.predict(img)[0]
