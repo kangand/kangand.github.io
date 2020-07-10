@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Preview Image</title>
+	</head>
+	<body>
+		<form action="/route_to_post_form_to" method="post">
+			<input type="file" accept="image/*" onchange="previewImage(event)"><br>
+			<br>
+			<input type="submit" value="Submit">
+		</form> 
+		<div>
+			<img style="height:100px;width:100px;display:none" id="your-image"/>
+		</div>
+
+		<script>
+			var previewImage = function(event) {
+				var preview = document.getElementById('your-image');
+				preview.src = URL.createObjectURL(event.target.files[0]);
+				preview.style.display = "block";
+			};
+		</script>
+	</body>
+</html>
