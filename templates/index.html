@@ -1,3 +1,4 @@
+  
 <!DOCTYPE html>
 <html >
 <head>
@@ -18,24 +19,36 @@ body, html {height: 100% }
 form{ color:white;}
 </style>
 <body>
- <div class="login">
+ <div class="login" style="padding-left:80px">
   <h1>Demo: Jewellery Classification</h1>
 
     <div class="Variables">
     <form action="{{ url_for('predict')}}"method="post" enctype=multipart/form-data>
 
     <label>Pick image</label>
-    <input type=file name=file>
+    <input type=file name=file accept="image/*" onchange="previewImage(event)">
  
     </div>
     <br>
    <br>
-    <div>
+    <div style="padding-left:80px">
     <button type="submit" class="btn btn-primary btn-block btn-large">Predict Jewellery Type</button>
     </div>
 
     </form>
 
+		<div style="padding-left:80px">
+			<img style="height:100px;width:100px;display:none" id="your-image"/>
+		</div>
+
+		<script>
+			var previewImage = function(event) {
+				var preview = document.getElementById('your-image');
+				preview.src = URL.createObjectURL(event.target.files[0]);
+				preview.style.display = "block";
+			};
+		</script>   
+   
    <br>
    <br>
    {{ prediction_text }}
