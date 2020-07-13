@@ -51,6 +51,7 @@ def predict():
     
     #Custom code to return percentages as table
     prediction = make_table(prediction)
+    prediction = prediction.to_html
 
     #Render the result in the html template
     return render_template('index.html', prediction_text='Your Prediction :  {} '.format(prediction))
