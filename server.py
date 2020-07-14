@@ -47,11 +47,11 @@ def predict():
     img = open_image(to_predict)
 
     #Getting the prediction from the model
-    prediction = model.predict(img)[2]
+    prediction = model.predict(img)[0]
     
     #Custom code to return percentages as table
-    prediction = make_table(prediction)
-    prediction = prediction.to_html
+    #prediction = make_table(prediction)
+    #prediction = prediction.to_html
 
     #Render the result in the html template
     return render_template('index.html', prediction_text='Your Prediction :  {} '.format(prediction))
